@@ -71,9 +71,48 @@ export default class ShoppingCart extends Component {
         }
     }
 
-    addGiftWrap = (e) =>{
+    addAppleGiftWrap = () =>{
+        let appleGiftCheckbox = document.getElementById('giftApple');
 
+        if (appleGiftCheckbox.checked === true)
+        {
+            this.setState((stateAttr) => {
+                return {
+                     subtotal: stateAttr.subtotal + 3
+                 }
+            });
+        } else {
+            this.setState((stateAttr) => {
+                return {
+                     subtotal: stateAttr.subtotal - 3
+                 }
+            });
+        }   
+        this.calculateTax(); 
     }
+
+    addOrangeGiftWrap = () =>{
+        let orangeGiftCheckbox = document.getElementById('giftOrange');
+
+        if (orangeGiftCheckbox.checked === true)
+        {
+            this.setState((stateAttr) => {
+                return {
+                     subtotal: stateAttr.subtotal + 3
+                 }
+            });
+        } else {
+            this.setState((stateAttr) => {
+                return {
+                     subtotal: stateAttr.subtotal - 3
+                 }
+            });
+        }   
+        this.calculateTax(); 
+    }
+
+    
+
 
     calculateTax = () => {
         console.log("******* Inside calculate Tax *******");
@@ -94,13 +133,13 @@ export default class ShoppingCart extends Component {
                 <div className="buttonActions">
                     <button id="plusApples" onClick={this.addApples}>+</button>
                     <button id="minusApples" onClick={this.minusApples}>-</button>
-                    <input type="checkbox" id="giftApple" name="giftApple" value="giftWrapApple"/>
+                    <input type="checkbox" id="giftApple" name="giftApple" value="giftWrapApple" onChange={this.addAppleGiftWrap}/>Gift Wrap
                 </div>
                 <LineItem name = "Oranges" cost = {this.state.orangesCost} quantity = {this.state.orangesQuantity}/>
                 <div className="buttonActions">
                     <button id="plusOranges" onClick={this.addOranges}>+</button>
                     <button id="minusOranges" onClick={this.minusOranges}>-</button>
-                    <input type="checkbox" onChange={this.addGiftWrap} id="giftOrange" name="giftOrange" value="giftWrapOrange"/>
+                    <input type="checkbox" id="giftOrange" name="giftOrange" value="giftWrapOrange" onChange={this.addOrangeGiftWrap}/>Gift Wrap
                 </div>
                 <Totals subtotal={this.state.subtotal} tax={this.state.tax} total={this.state.total} />
             </div>
