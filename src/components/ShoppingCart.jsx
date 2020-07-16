@@ -12,7 +12,8 @@ export default class ShoppingCart extends Component {
             orangesCost : 2,
             tax : 0,
             subtotal : 0,
-            total : 0
+            total : 0,
+            giftWrap: 0
         }
     }
 
@@ -78,13 +79,15 @@ export default class ShoppingCart extends Component {
         {
             this.setState((stateAttr) => {
                 return {
-                     subtotal: stateAttr.subtotal + 3
+                    giftWrap: stateAttr.giftWrap + 3,
+                    subtotal: stateAttr.subtotal + 3
                  }
             });
         } else {
             this.setState((stateAttr) => {
                 return {
-                     subtotal: stateAttr.subtotal - 3
+                    giftWrap: stateAttr.giftWrap - 3,
+                    subtotal: stateAttr.subtotal - 3
                  }
             });
         }   
@@ -98,20 +101,23 @@ export default class ShoppingCart extends Component {
         {
             this.setState((stateAttr) => {
                 return {
-                     subtotal: stateAttr.subtotal + 3
+                     subtotal: stateAttr.subtotal + 3,
+                     giftWrap: stateAttr.giftWrap + 3,
+
                  }
             });
         } else {
             this.setState((stateAttr) => {
                 return {
-                     subtotal: stateAttr.subtotal - 3
+                     subtotal: stateAttr.subtotal - 3,
+                     giftWrap: stateAttr.giftWrap - 3,
                  }
             });
         }   
         this.calculateTax(); 
     }
 
-    
+
 
 
     calculateTax = () => {
@@ -129,19 +135,23 @@ export default class ShoppingCart extends Component {
     render() {
         return (
             <div className="shoppingCart">
-                <LineItem name = "Apples" cost = {this.state.applesCost} quantity = {this.state.applesQuantity}/>
-                <div className="buttonActions">
-                    <button id="plusApples" onClick={this.addApples}>+</button>
-                    <button id="minusApples" onClick={this.minusApples}>-</button>
-                    <input type="checkbox" id="giftApple" name="giftApple" value="giftWrapApple" onChange={this.addAppleGiftWrap}/>Gift Wrap
+                <div className="leftHalf">
+                    <LineItem name = "Apples" cost = {this.state.applesCost} quantity = {this.state.applesQuantity} pic= "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
+                    <div className="buttonActions">
+                        <button id="plusApples" onClick={this.addApples}>+</button>
+                        <button id="minusApples" onClick={this.minusApples}>-</button>
+                        <input type="checkbox" id="giftApple" name="giftApple" value="giftWrapApple" onChange={this.addAppleGiftWrap}/>Gift Wrap
+                    </div>
+                    <LineItem name = "Oranges" cost = {this.state.orangesCost} quantity = {this.state.orangesQuantity}pic= "https://images.unsplash.com/photo-1562599938-53b269c207a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=635&q=80" />
+                    <div className="buttonActions">
+                        <button id="plusOranges" onClick={this.addOranges}>+</button>
+                        <button id="minusOranges" onClick={this.minusOranges}>-</button>
+                        <input type="checkbox" id="giftOrange" name="giftOrange" value="giftWrapOrange" onChange={this.addOrangeGiftWrap}/>Gift Wrap
+                    </div>
                 </div>
-                <LineItem name = "Oranges" cost = {this.state.orangesCost} quantity = {this.state.orangesQuantity}/>
-                <div className="buttonActions">
-                    <button id="plusOranges" onClick={this.addOranges}>+</button>
-                    <button id="minusOranges" onClick={this.minusOranges}>-</button>
-                    <input type="checkbox" id="giftOrange" name="giftOrange" value="giftWrapOrange" onChange={this.addOrangeGiftWrap}/>Gift Wrap
+                <div className="rightHalf">
+                <Totals subtotal={this.state.subtotal} tax={this.state.tax} total={this.state.total} gift={this.state.giftWrap} />
                 </div>
-                <Totals subtotal={this.state.subtotal} tax={this.state.tax} total={this.state.total} />
             </div>
         )
     }

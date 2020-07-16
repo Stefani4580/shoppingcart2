@@ -5,7 +5,14 @@ function LineItem(props) {
     return (
      
         <div>
-            <table className="itemTable">
+            <div className="item">
+                {/* pic from unsplashed  */}
+                <img src={props.pic} alt=""/>
+                <h3>{props.name}</h3>
+                <h3>${props.cost}</h3>
+                <h3>{props.quantity}</h3>
+            </div>
+            {/* <table className="itemTable">
                 <tr>
                     <th>Name</th>
                     <th>Cost</th>
@@ -16,7 +23,7 @@ function LineItem(props) {
                     <td>{props.cost}</td>
                     <td>{props.quantity}</td>
                 </tr>
-            </table>
+            </table> */}
         </div>
     )
 }
