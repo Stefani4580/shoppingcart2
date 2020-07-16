@@ -12,18 +12,6 @@ function LineItem(props) {
                 <h3>${props.cost}</h3>
                 <h3>{props.quantity}</h3>
             </div>
-            {/* <table className="itemTable">
-                <tr>
-                    <th>Name</th>
-                    <th>Cost</th>
-                    <th>Quantity</th>
-                </tr>
-                <tr>
-                    <td>{props.name}</td>
-                    <td>{props.cost}</td>
-                    <td>{props.quantity}</td>
-                </tr>
-            </table> */}
         </div>
     )
 }

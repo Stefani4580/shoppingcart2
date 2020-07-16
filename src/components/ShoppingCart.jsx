@@ -138,15 +138,23 @@ export default class ShoppingCart extends Component {
                 <div className="leftHalf">
                     <LineItem name = "Apples" cost = {this.state.applesCost} quantity = {this.state.applesQuantity} pic= "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
                     <div className="buttonActions">
-                        <button id="plusApples" onClick={this.addApples}>+</button>
-                        <button id="minusApples" onClick={this.minusApples}>-</button>
-                        <input type="checkbox" id="giftApple" name="giftApple" value="giftWrapApple" onChange={this.addAppleGiftWrap}/>Gift Wrap
+                        <div className="buttons">
+                            <button id="plusApples" onClick={this.addApples}>+</button>
+                            <button id="minusApples" onClick={this.minusApples}>-</button>
+                        </div>
+                        <div className="giftCheckbox">
+                            <input type="checkbox" id="giftApple" name="giftApple" value="giftWrapApple" onChange={this.addAppleGiftWrap}/>Gift Wrap
+                        </div>
                     </div>
                     <LineItem name = "Oranges" cost = {this.state.orangesCost} quantity = {this.state.orangesQuantity}pic= "https://images.unsplash.com/photo-1562599938-53b269c207a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=635&q=80" />
                     <div className="buttonActions">
-                        <button id="plusOranges" onClick={this.addOranges}>+</button>
-                        <button id="minusOranges" onClick={this.minusOranges}>-</button>
-                        <input type="checkbox" id="giftOrange" name="giftOrange" value="giftWrapOrange" onChange={this.addOrangeGiftWrap}/>Gift Wrap
+                        <div className="buttons">
+                            <button id="plusOranges" onClick={this.addOranges}>+</button>
+                            <button id="minusOranges" onClick={this.minusOranges}>-</button>
+                        </div>
+                        <div className="giftCheckbox">
+                            <input type="checkbox" id="giftOrange" name="giftOrange" value="giftWrapOrange" onChange={this.addOrangeGiftWrap}/>Gift Wrap
+                        </div>
                     </div>
                 </div>
                 <div className="rightHalf">
